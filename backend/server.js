@@ -37,9 +37,10 @@ app.use('/api/auth',auth);
 app.use('/api/user',user);
 
 const MONGO=process.env.MONGO_URI || "mongodb://127.0.0.1:27017/partyverse";
+const PORT = process.env.PORT || 5002;
 console.log("Connecting to:",MONGO);
 
 mongoose.connect(MONGO).then(()=>{
  console.log("MongoDB Connected");
- app.listen(5002,()=>console.log("Server running 5002"));
+ app.listen(PORT,()=>console.log(`Server running on port ${PORT}`));
 }).catch(e=>console.error(e));

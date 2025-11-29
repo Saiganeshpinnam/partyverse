@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: partyverse-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://pinnamsaiganesh:12345@cluster0.lrmdli5.mongodb.net/partyverse?retryWrites=true&w=majority&appName=Cluster0
+      - key: JWT_SECRET
+        generateValue: true

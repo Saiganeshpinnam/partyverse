@@ -3,11 +3,12 @@ import { persist } from 'zustand/middleware';
 
 // Determine API base URL
 const getApiBase = () => {
+  // For local development
   if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
     return 'http://localhost:5002';
   }
-  // For production, use the same origin as the frontend
-  return window.location.origin.replace('https://', 'https://').replace('http://', 'http://');
+  // For production, use your backend domain (update this to your deployed backend)
+  return 'https://partyverse.onrender.com'; // Replace with your actual backend URL
 };
 
 export interface AvatarConfig {

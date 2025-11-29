@@ -1,5 +1,5 @@
 // simple API client using fetch
-const API_BASE = import.meta.env.VITE_API_BASE || (window.location.hostname === 'localhost' ? 'http://localhost:5002' : '');
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://partyverse.onrender.com';
 // console.log("api base");
 async function request(path, opts = {}) {
   const headers = opts.headers || {};

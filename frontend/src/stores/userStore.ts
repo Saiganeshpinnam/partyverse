@@ -1,6 +1,15 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+// Determine API base URL
+const getApiBase = () => {
+  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+    return 'http://localhost:5002';
+  }
+  // For production, use the same origin as the frontend
+  return window.location.origin.replace('https://', 'https://').replace('http://', 'http://');
+};
+
 export interface AvatarConfig {
   gender: 'male' | 'female';
   avatarModel: string;
@@ -65,8 +74,9 @@ export const useUserStore = create<UserState>()(
       login: async (email, password) => {
         set({ isLoading: true });
         try {
-          console.log('Frontend login attempt:', { email });
-          const response = await fetch('http://localhost:5002/api/auth/login', {
+          const apiBase = getApiBase();
+          console.log('Frontend login attempt:', { email, apiBase });
+          const response = await fetch(`${apiBase}/api/auth/login`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -123,7 +133,8 @@ export const useUserStore = create<UserState>()(
       register: async (username, email, password, gender) => {
         set({ isLoading: true });
         try {
-          const response = await fetch('http://localhost:5002/api/auth/register', {
+          const apiBase = getApiBase();
+          const response = await fetch(`${apiBase}/api/auth/register`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

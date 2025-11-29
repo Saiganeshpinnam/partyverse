@@ -66,7 +66,7 @@ export const useUserStore = create<UserState>()(
         set({ isLoading: true });
         try {
           console.log('Frontend login attempt:', { email });
-          const response = await fetch('/api/auth/login', {
+          const response = await fetch('http://localhost:5002/api/auth/login', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ export const useUserStore = create<UserState>()(
       register: async (username, email, password, gender) => {
         set({ isLoading: true });
         try {
-          const response = await fetch('/api/auth/register', {
+          const response = await fetch('http://localhost:5002/api/auth/register', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

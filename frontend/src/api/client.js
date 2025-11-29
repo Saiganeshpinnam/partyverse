@@ -1,6 +1,6 @@
 // simple API client using fetch
-const API_BASE = import.meta.env.VITE_API_BASE || (window.location.hostname === 'localhost' ? 'http://localhost:5000' : '');
-
+const API_BASE = import.meta.env.VITE_API_BASE || (window.location.hostname === 'localhost' ? 'http://localhost:5002' : '');
+// console.log("api base");
 async function request(path, opts = {}) {
   const headers = opts.headers || {};
   if (localStorage.getItem('token')) {
